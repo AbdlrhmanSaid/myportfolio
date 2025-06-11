@@ -1,6 +1,58 @@
 import { Badge } from "@/components/ui/badge";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiRedux,
+  SiReactrouter,
+  SiTailwindcss,
+  SiBootstrap,
+  SiSass,
+  SiMongodb,
+  SiAxios,
+  SiReactquery,
+  SiCloudinary,
+  SiVite,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiAdobexd,
+  SiCodepen,
+  SiAuth0,
+  SiNodemon,
+} from "react-icons/si";
 
 export default function About() {
+  const skills = [
+    { name: "HTML", icon: SiHtml5 },
+    { name: "CSS", icon: SiCss3 },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "React.js", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "Redux", icon: SiRedux },
+    { name: "React Router", icon: SiReactrouter },
+    { name: "Tailwind CSS", icon: SiTailwindcss },
+    { name: "Shadcn", icon: SiCodepen },
+    { name: "Bootstrap", icon: SiBootstrap },
+    { name: "Sass", icon: SiSass },
+    { name: "EmailJs", icon: SiNodemon },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "Mongoose", icon: SiMongodb },
+    { name: "Axios", icon: SiAxios },
+    { name: "React Query", icon: SiReactquery },
+    { name: "Clerk", icon: SiAuth0 },
+    { name: "Cloudinary", icon: SiCloudinary },
+    { name: "Vite", icon: SiVite },
+    { name: "Git", icon: SiGit },
+    { name: "GitHub", icon: SiGithub },
+    { name: "Figma", icon: SiFigma },
+    { name: "Adobe XD", icon: SiAdobexd },
+  ];
+
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,35 +72,14 @@ export default function About() {
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "HTML",
-                "CSS",
-                "JavaScript",
-                "TypeScript",
-                "React.js",
-                "Next.js",
-                "Redux",
-                "React Router",
-                "Tailwind CSS",
-                "Shadcn",
-                "Bootstrap",
-                "Sass",
-                "EmailJs",
-                "MongoDB",
-                "Mongoose",
-                "Axios",
-                "React Query",
-                "Clerk",
-                "Cloudinary",
-                "Vite",
-                "Git",
-                "GitHub",
-                "Figma",
-                "Adobe XD",
-              ].map((skill) => (
-                <div key={skill} className="text-center">
-                  <Badge variant="secondary" className="mb-2">
-                    {skill}
+              {skills.map((skill) => (
+                <div key={skill.name} className="text-center">
+                  <Badge
+                    variant="secondary"
+                    className="mb-2 flex  items-center justify-center"
+                  >
+                    <skill.icon className="w-4 h-4 mr-1 t  dark:text-gray-300" />
+                    <p>{skill.name}</p>
                   </Badge>
                 </div>
               ))}
