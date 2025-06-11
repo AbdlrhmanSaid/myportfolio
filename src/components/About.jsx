@@ -20,15 +20,38 @@ export default function About() {
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["HTML/CSS", "JavaScript", "React.js", "Next.js"].map(
-                (skill) => (
-                  <div key={skill} className="text-center">
-                    <Badge variant="secondary" className="mb-2">
-                      {skill}
-                    </Badge>
-                  </div>
-                )
-              )}
+              {[
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "TypeScript",
+                "React.js",
+                "Next.js",
+                "Redux",
+                "React Router",
+                "Tailwind CSS",
+                "Shadcn",
+                "Bootstrap",
+                "Sass",
+                "EmailJs",
+                "MongoDB",
+                "Mongoose",
+                "Axios",
+                "React Query",
+                "Clerk",
+                "Cloudinary",
+                "Vite",
+                "Git",
+                "GitHub",
+                "Figma",
+                "Adobe XD",
+              ].map((skill) => (
+                <div key={skill} className="text-center">
+                  <Badge variant="secondary" className="mb-2">
+                    {skill}
+                  </Badge>
+                </div>
+              ))}
             </div>
           </div>
         </div>
