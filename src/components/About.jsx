@@ -27,30 +27,30 @@ import {
 
 export default function About() {
   const skills = [
-    { name: "HTML", icon: SiHtml5 },
-    { name: "CSS", icon: SiCss3 },
-    { name: "JavaScript", icon: SiJavascript },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "React.js", icon: SiReact },
-    { name: "Next.js", icon: SiNextdotjs },
-    { name: "Redux", icon: SiRedux },
-    { name: "React Router", icon: SiReactrouter },
-    { name: "Tailwind CSS", icon: SiTailwindcss },
-    { name: "Shadcn", icon: SiCodepen },
-    { name: "Bootstrap", icon: SiBootstrap },
-    { name: "Sass", icon: SiSass },
-    { name: "EmailJs", icon: SiNodemon },
-    { name: "MongoDB", icon: SiMongodb },
-    { name: "Mongoose", icon: SiMongodb },
-    { name: "Axios", icon: SiAxios },
-    { name: "React Query", icon: SiReactquery },
-    { name: "Clerk", icon: SiAuth0 },
-    { name: "Cloudinary", icon: SiCloudinary },
-    { name: "Vite", icon: SiVite },
-    { name: "Git", icon: SiGit },
-    { name: "GitHub", icon: SiGithub },
-    { name: "Figma", icon: SiFigma },
-    { name: "Adobe XD", icon: SiAdobexd },
+    { name: "HTML", icon: SiHtml5, color: "text-orange-600" },
+    { name: "CSS", icon: SiCss3, color: "text-blue-600" },
+    { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
+    { name: "TypeScript", icon: SiTypescript, color: "text-blue-700" },
+    { name: "React.js", icon: SiReact, color: "text-cyan-500" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white" },
+    { name: "Redux", icon: SiRedux, color: "text-purple-600" },
+    { name: "React Router", icon: SiReactrouter, color: "text-red-600" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-500" },
+    { name: "Shadcn", icon: SiCodepen, color: "text-black dark:text-white" },
+    { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-700" },
+    { name: "Sass", icon: SiSass, color: "text-pink-500" },
+    { name: "EmailJs", icon: SiNodemon, color: "text-green-600" },
+    { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
+    { name: "Mongoose", icon: SiMongodb, color: "text-green-500" },
+    { name: "Axios", icon: SiAxios, color: "text-purple-500" },
+    { name: "React Query", icon: SiReactquery, color: "text-red-500" },
+    { name: "Clerk", icon: SiAuth0, color: "text-blue-800" },
+    { name: "Cloudinary", icon: SiCloudinary, color: "text-blue-500" },
+    { name: "Vite", icon: SiVite, color: "text-purple-400" },
+    { name: "Git", icon: SiGit, color: "text-orange-500" },
+    { name: "GitHub", icon: SiGithub, color: "text-black dark:text-white" },
+    { name: "Figma", icon: SiFigma, color: "text-pink-600" },
+    { name: "Adobe XD", icon: SiAdobexd, color: "text-pink-700" },
   ];
 
   return (
@@ -71,14 +71,14 @@ export default function About() {
               JavaScript, React.js, and Next.js.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {skills.map((skill) => (
                 <div key={skill.name} className="text-center">
                   <Badge
                     variant="secondary"
-                    className="mb-2 flex  items-center justify-center"
+                    className="mb-2 flex items-center justify-center px-4 py-2 text-sm font-medium transition-transform transform hover:scale-105"
                   >
-                    <skill.icon className="w-4 h-4 mr-1 t  dark:text-gray-300" />
+                    <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
                     <p>{skill.name}</p>
                   </Badge>
                 </div>
