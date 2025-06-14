@@ -29,30 +29,13 @@ export default function Home() {
       <Toaster position="top-center" reverseOrder={true} />
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      {/* Hero Section */}
-      <section className="snap-start">
+      
         <Hero />
-      </section>
-
-      {/* About Section */}
-      <section className="snap-start">
         <About />
-      </section>
-
-      {/* Projects Section */}
-      <section className="snap-start">
         <Projects />
-      </section>
-
-      {/* Contact Section */}
-      <section className="snap-start">
-        <Contact />
-      </section>
-
-      {/* Footer */}
-      <footer>
+        <Contact />     
         <Footer />
-      </footer>
+     
     </div>
   );
 }
