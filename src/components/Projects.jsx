@@ -8,10 +8,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="py-20 bg-gray-50 dark:bg-gray-800"
+      id="projects"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -71,6 +78,6 @@ export default function Projects() {
             </div>
           ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
