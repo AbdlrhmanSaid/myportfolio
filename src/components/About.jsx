@@ -25,6 +25,7 @@ import {
   SiNodemon,
 } from "react-icons/si";
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 export default function About() {
   const skills = [
@@ -54,44 +55,156 @@ export default function About() {
     { name: "Adobe XD", icon: SiAdobexd, color: "text-pink-700" },
   ];
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="py-20 bg-white dark:bg-gray-900"
+      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
       id="about"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      {/* Decorative elements */}
+      <motion.div
+        className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-50"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+      />
+      <motion.div
+        className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-indigo-100 dark:bg-indigo-900/30 blur-3xl opacity-50"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          delay: 0.5,
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            About Me
+            <TypeAnimation
+              sequence={[
+                "About Me",
+                1000,
+                "My Skills",
+                1000,
+                "My Expertise",
+                1000,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+            />
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-        </div>
+          <motion.div
+            className="w-20 h-1 bg-blue-600 mx-auto"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, type: "spring" }}
+          />
+        </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 md:p-12">
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-              Abdelrhman Saeid is a passionate Front-End Developer with 4+ years
-              of experience in modern web technologies including HTML, CSS,
-              JavaScript, React.js, and Next.js.
-            </p>
+          <motion.div
+            className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-700"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <motion.p
+              className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              Abdelrhman Saeid is a passionate{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-medium">
+                Front-End Developer
+              </span>{" "}
+              with{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-medium">
+                4+ years
+              </span>{" "}
+              of experience specializing in modern web technologies including{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-medium">
+                React.js
+              </span>
+              ,{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-medium">
+                Next.js
+              </span>
+              , and{" "}
+              <span className="text-blue-600 dark:text-blue-400 font-medium">
+                TypeScript
+              </span>
+              .
+            </motion.p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {skills.map((skill) => (
-                <div key={skill.name} className="text-center">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  className="text-center"
+                  variants={item}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Badge
                     variant="secondary"
-                    className="mb-2 flex items-center justify-center px-4 py-2 text-sm font-medium transition-transform transform hover:scale-105"
+                    className="mb-2 flex items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
+                    <motion.div
+                      initial={{ rotate: 0 }}
+                      whileHover={{ rotate: 10 }}
+                      transition={{ type: "spring" }}
+                    >
+                      <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
+                    </motion.div>
                     <p>{skill.name}</p>
                   </Badge>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </motion.section>
