@@ -73,36 +73,6 @@ export const projects = {
       image: "/tourism.png",
     },
   ],
-  "HTML & CSS": [
-    {
-      title: "Template 1",
-      description:
-        "Modern responsive landing page template with clean design and smooth animations",
-      url: "https://abdlrhmansaid.github.io/Temp-1/",
-      image: "/temp1.png",
-    },
-    {
-      title: "Template 2",
-      description:
-        "Professional business website template with modern layout and responsive design",
-      url: "https://abdlrhmansaid.github.io/Temp-2/",
-      image: "/temp2.png",
-    },
-    {
-      title: "Template 3",
-      description:
-        "Creative portfolio template showcasing elegant design and user experience",
-      url: "https://abdlrhmansaid.github.io/Temp-3/",
-      image: "/temp3.png",
-    },
-    {
-      title: "Template 4",
-      description:
-        "Creative agency template with dynamic layouts and interactive elements",
-      url: "https://abdlrhmansaid.github.io/Temp-4/index.html",
-      image: "/temp4.png",
-    },
-  ],
   JavaScript: [
     {
       title: "Quiz App",
@@ -125,22 +95,8 @@ export const projects = {
       url: "https://abdlrhmansaid.github.io/Typing-Speed/",
       image: "/Typing Speed.png",
     },
-    {
-      title: "To Do App",
-      description:
-        "Task management application with add, edit, delete functionality and local storage",
-      url: "https://abdlrhmansaid.github.io/To-Do-AppList/",
-      image: "/TOdo.png",
-    },
   ],
   React: [
-    {
-      title: "Tshop V2",
-      description:
-        "E-commerce shopping platform built with React and Bootstrap featuring product catalog and cart",
-      url: "https://tshop-v2.vercel.app",
-      image: "/Tshop V2.png",
-    },
     {
       title: "To Do List",
       description:
