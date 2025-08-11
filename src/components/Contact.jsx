@@ -163,15 +163,15 @@ export default function Contact() {
                 whileHover={{ x: 5 }}
               >
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <Mail className="w-6 h-6 text-blue-700 dark:text-blue-300" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Email
                   </h4>
                   <a
                     href="mailto:bodesaid3@gmail.com"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
+                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
                   >
                     bodesaid3@gmail.com
                   </a>
@@ -183,15 +183,15 @@ export default function Contact() {
                 whileHover={{ x: 5 }}
               >
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Phone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <Phone className="w-6 h-6 text-blue-700 dark:text-blue-300" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Phone
                   </h4>
                   <a
                     href="tel:+201206734290"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
+                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
                   >
                     +201206734290
                   </a>
@@ -203,17 +203,17 @@ export default function Contact() {
                 whileHover={{ x: 5 }}
               >
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <MessageCircle className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <MessageCircle className="w-6 h-6 text-blue-700 dark:text-blue-300" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     WhatsApp
                   </h4>
                   <a
                     href="https://wa.me/201206734290"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
+                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
                   >
                     Chat on WhatsApp
                   </a>
@@ -225,17 +225,17 @@ export default function Contact() {
                 whileHover={{ x: 5 }}
               >
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <Linkedin className="w-6 h-6 text-blue-700 dark:text-blue-300" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     LinkedIn
                   </h4>
                   <a
                     href="https://www.linkedin.com/in/abdelrhman-saeid-95564a25a/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
+                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
                   >
                     Connect on LinkedIn
                   </a>
@@ -247,17 +247,17 @@ export default function Contact() {
                 whileHover={{ x: 5 }}
               >
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Github className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <Github className="w-6 h-6 text-blue-700 dark:text-blue-300" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     GitHub
                   </h4>
                   <a
                     href="https://github.com/AbdlrhmanSaid"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
+                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
                   >
                     View GitHub Profile
                   </a>

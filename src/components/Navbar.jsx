@@ -62,6 +62,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
                 size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-gray-900 dark:text-white"
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? (
                   <X className="h-6 w-6" />

@@ -106,15 +106,15 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-400">
+            <h3 className="text-lg font-semibold text-blue-700">
               Contact Info
             </h3>
             <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                 <Mail className="w-4 h-4" />
                 <span>bodesaid3@gmail.com</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                 <Phone className="w-4 h-4" />
                 <span>+201206734290</span>
               </li>
@@ -122,7 +122,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-400">Follow Me</h3>
+            <h3 className="text-lg font-semibold text-blue-700">Follow Me</h3>
             <div className="flex space-x-4">
               <Button
                 variant="ghost"
@@ -182,10 +182,10 @@ export default function Footer() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-gray-500">
+          <p className="text-gray-700 dark:text-gray-300">
             © {currentYear} Abdelrhman Saeid. All rights reserved.
           </p>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-gray-800 dark:text-gray-400 text-sm mt-2">
             Built with Next.js, Tailwind CSS, and
           </p>
         </motion.div>
