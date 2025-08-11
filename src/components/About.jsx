@@ -152,23 +152,23 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               Abdelrhman Saeid is a passionate{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-blue-700 dark:text-blue-300 font-medium">
                 Front-End Developer
               </span>{" "}
               with{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-blue-700 dark:text-blue-300 font-medium">
                 4+ years
               </span>{" "}
               of experience specializing in modern web technologies including{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-blue-700 dark:text-blue-300 font-medium">
                 React.js
               </span>
               ,{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-blue-700 dark:text-blue-300 font-medium">
                 Next.js
               </span>
               , and{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-blue-700 dark:text-blue-300 font-medium">
                 TypeScript
               </span>
               .

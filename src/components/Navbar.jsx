@@ -45,6 +45,9 @@ export default function Navbar({ darkMode, setDarkMode }) {
               size="icon"
               onClick={() => setDarkMode(!darkMode)}
               className="text-gray-900 dark:text-white"
+              aria-label={
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
             >
               {darkMode ? (
                 <Sun className="h-5 w-5" />

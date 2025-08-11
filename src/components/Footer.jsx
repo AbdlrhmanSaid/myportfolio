@@ -66,22 +66,22 @@ export default function Footer() {
           animate="show"
         >
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-400">
+            <h3 className="text-lg font-semibold text-blue-700">
               Abdelrhman Saeid
             </h3>
-            <p className="text-gray-400">
+            <p className="text-gray-700">
               Front-End Developer passionate about creating beautiful,
               responsive, and user-friendly web experiences.
             </p>
           </motion.div>
 
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-400">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-blue-700">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#about"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-white transition-colors"
                 >
                   About Me
                 </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#projects"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-white transition-colors"
                 >
                   Projects
                 </Link>
@@ -124,31 +124,52 @@ export default function Footer() {
           <motion.div variants={item} className="space-y-4">
             <h3 className="text-lg font-semibold text-blue-400">Follow Me</h3>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                asChild
+                aria-label="GitHub Profile"
+              >
                 <Link
                   href="https://github.com/AbdlrhmanSaid"
                   target="_blank"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-700 hover:text-white"
+                  aria-label="GitHub Profile"
                 >
                   <Github className="w-5 h-5" />
+                  <span className="sr-only">GitHub</span>
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                asChild
+                aria-label="LinkedIn Profile"
+              >
                 <Link
                   href="https://www.linkedin.com/in/abdelrhman-saeid-95564a25a/"
                   target="_blank"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-700 hover:text-white"
+                  aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
+                  <span className="sr-only">LinkedIn</span>
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                asChild
+                aria-label="WhatsApp Chat"
+              >
                 <Link
                   href="https://wa.me/201206734290"
                   target="_blank"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-700 hover:text-white"
+                  aria-label="WhatsApp Chat"
                 >
                   <MessageCircle className="w-5 h-5" />
+                  <span className="sr-only">WhatsApp</span>
                 </Link>
               </Button>
             </div>
