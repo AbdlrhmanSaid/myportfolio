@@ -153,12 +153,8 @@ export default function Projects() {
             initial="hidden"
             animate="show"
           >
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.title}
-                variants={item}
-                whileHover={{ y: -5 }}
-              >
+            {filteredProjects.reverse().map((project, index) => (
+              <motion.div key={index} variants={item} whileHover={{ y: -5 }}>
                 <Card className="group h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="aspect-video overflow-hidden relative">
                     <Image
@@ -221,7 +217,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <h3 className="text-xl font-medium text-gray-500 dark:text-gray-400">
+            <h3 className="text-xl font-medium text-gray-800 dark:text-gray-200">
               No projects found matching your criteria
             </h3>
             <Button

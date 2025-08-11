@@ -17,6 +17,7 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const MotionButton = motion(Button);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -331,7 +332,7 @@ export default function Contact() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <Button
+                <MotionButton
                   type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   disabled={isSubmitting}
@@ -339,7 +340,7 @@ export default function Contact() {
                   whileTap={{ scale: 0.98 }}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                </MotionButton>
               </motion.div>
             </motion.form>
           </motion.div>
