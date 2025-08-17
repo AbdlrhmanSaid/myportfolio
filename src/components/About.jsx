@@ -190,7 +190,7 @@ export default function About() {
                 >
                   <Badge
                     variant="secondary"
-                    className="mb-2 flex items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="mb-2 flex items-center justify-center p-2 text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <motion.div
                       initial={{ rotate: 0 }}

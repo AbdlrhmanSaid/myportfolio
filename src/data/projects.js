@@ -1,6 +1,12 @@
 export const projects = {
   "Real Projects": [
     {
+      title: "Fitlife",
+      description: "Gym website with responsive design and modern UI",
+      url: "https://www.fitlife.ps/",
+      image: "/fitlife.png",
+    },
+    {
       title: "FinalStep",
       description:
         "Full-stack app for managing team projects and tasks with role-based access",
