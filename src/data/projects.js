@@ -30,13 +30,7 @@ export const projects = {
     },
   ],
   "Next.js": [
-    {
-      title: "FinalStep",
-      description:
-        "Full-stack app for managing team projects and tasks with role-based access",
-      url: "https://final-step.vercel.app/",
-      image: "/finalstep.png",
-    },
+    
     {
       title: "Quick Cart",
       description:
