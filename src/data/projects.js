@@ -1,6 +1,13 @@
 export const projects = {
   "Real Projects": [
     {
+      title: "PhoneX E-commerce",
+      description:
+        "E-commerce website for selling phones with user authentication and payment integration",
+      url: "https://frontend-phonex.vercel.app/",
+      image: "/phoneX.png",
+    },
+    {
       title: "Fitlife",
       description: "Gym website with responsive design and modern UI",
       url: "https://www.fitlife.ps/",
@@ -36,7 +43,6 @@ export const projects = {
     },
   ],
   "Next.js": [
-    
     {
       title: "Quick Cart",
       description:
