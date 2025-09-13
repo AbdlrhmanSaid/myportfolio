@@ -1,14 +1,41 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { useRef, useEffect, useState } from "react";
 
 export default function Hero() {
+  const containerRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // تتبع حركة الماوس
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setMousePosition({ x, y });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("mousemove", handleMouseMove);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, []);
 
   // Animation variants
   const container = {
@@ -29,22 +56,68 @@ export default function Hero() {
 
   return (
     <motion.section
+      ref={containerRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20 h-screen relative overflow-hidden"
     >
-      {/* Animated background elements */}
+      {/* Animated background elements that follow mouse */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-full"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
+        animate={{ opacity: 0.2 }}
         transition={{ duration: 2, delay: 0.5 }}
       >
-        <div className="absolute top-20 left-20 w-40 h-40 rounded-full bg-blue-400 blur-3xl opacity-30 dark:opacity-20"></div>
-        <div className="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-indigo-400 blur-3xl opacity-30 dark:opacity-20"></div>
-        <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-purple-400 blur-3xl opacity-30 dark:opacity-20"></div>
+        {/* Glow effect that follows mouse */}
+        <motion.div
+          className="absolute w-80 h-80 rounded-full bg-blue-400 blur-3xl opacity-30 dark:opacity-20"
+          animate={{
+            x: mousePosition.x - 160,
+            y: mousePosition.y - 160,
+          }}
+          transition={{ type: "spring", damping: 20, stiffness: 100 }}
+        />
+        <motion.div
+          className="absolute w-96 h-96 rounded-full bg-indigo-400 blur-3xl opacity-20 dark:opacity-15"
+          animate={{
+            x: mousePosition.x - 192 + 100,
+            y: mousePosition.y - 192 - 100,
+          }}
+          transition={{
+            type: "spring",
+            damping: 25,
+            stiffness: 90,
+            delay: 0.1,
+          }}
+        />
+        <motion.div
+          className="absolute w-64 h-64 rounded-full bg-purple-400 blur-3xl opacity-20 dark:opacity-15"
+          animate={{
+            x: mousePosition.x - 128 - 150,
+            y: mousePosition.y - 128 + 150,
+          }}
+          transition={{
+            type: "spring",
+            damping: 22,
+            stiffness: 95,
+            delay: 0.2,
+          }}
+        />
       </motion.div>
+
+      {/* Additional static background elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-20 left-20 w-40 h-40 rounded-full bg-blue-400 blur-3xl opacity-20 dark:opacity-10 animate-pulse"></div>
+        <div
+          className="absolute bottom-20 right-20 w-60 h-60 rounded-full bg-indigo-400 blur-3xl opacity-20 dark:opacity-10 animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-purple-400 blur-3xl opacity-20 dark:opacity-10 animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full relative">
@@ -111,9 +184,14 @@ export default function Hero() {
                 <Button
                   onClick={() => scrollToSection("projects")}
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg relative overflow-hidden"
                 >
-                  View My Work
+                  <span className="relative z-10">View My Work</span>
+                  <motion.div
+                    className="absolute inset-0 bg-blue-700 opacity-0 rounded-lg"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
                 </Button>
               </motion.div>
               <motion.div
@@ -124,9 +202,14 @@ export default function Hero() {
                   onClick={() => scrollToSection("contact")}
                   variant="outline"
                   size="lg"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 shadow-lg"
+                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 shadow-lg relative overflow-hidden"
                 >
-                  Get In Touch
+                  <span className="relative z-10">Get In Touch</span>
+                  <motion.div
+                    className="absolute inset-0 bg-blue-600 opacity-0 rounded-lg"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
                 </Button>
               </motion.div>
             </motion.div>
