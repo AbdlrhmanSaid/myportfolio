@@ -199,7 +199,7 @@ export default function About() {
                     >
                       <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
                     </motion.div>
-                    <p className="text-[0.5rem]">{skill.name}</p>
+                    <p className="text-[0.7rem]">{skill.name}</p>
                   </Badge>
                 </motion.div>
               ))}
