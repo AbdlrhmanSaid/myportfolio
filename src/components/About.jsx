@@ -282,7 +282,7 @@ export default function About() {
                       onMouseLeave={handleIconHoverOut}
                     >
                       <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
-                    </motion.div>
+                    </div>
                     <p className="text-[1rem]">{skill.name}</p>
                   </Badge>
                 </div>
