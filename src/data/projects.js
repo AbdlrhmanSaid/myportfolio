@@ -23,7 +23,7 @@ export const projects = {
     {
       title: "Vecho",
       description:
-        "Security Devices Website is non-responsive. Based on customer request, it was built based on Figma design.",
+        "Security Devices Website. Based on customer request, it was built based on Figma design.",
       url: "https://vecho.bluedemo.me/",
       image: "/vecho.png",
     },
