@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
@@ -29,13 +30,12 @@ export default function Home() {
       <Toaster position="top-center" reverseOrder={true} />
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />     
-        <Footer />
-     
+      <Hero />
+      <About />
+      <Projects />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </div>
   );
 }

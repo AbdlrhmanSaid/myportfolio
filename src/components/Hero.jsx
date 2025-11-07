@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TypeAnimation } from "react-type-animation";
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { Download } from "lucide-react";
 
 export default function Hero() {
   const containerRef = useRef(null);
@@ -154,6 +155,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
+      id="home"
       className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20 h-screen relative overflow-hidden"
     >
       <div
@@ -231,10 +233,10 @@ export default function Hero() {
                 <Button
                   onClick={() => scrollToSection("projects")}
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg relative overflow-hidden group"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-500/50 relative overflow-hidden group"
                 >
                   <span className="relative z-10">View My Work</span>
-                  <div className="absolute inset-0 bg-blue-700 opacity-0 rounded-lg group-hover:opacity-100 transition-opacity duration-200" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 rounded-lg group-hover:opacity-100 transition-opacity duration-200" />
                 </Button>
               </div>
               <div
@@ -245,12 +247,34 @@ export default function Hero() {
               >
                 <Button
                   onClick={() => scrollToSection("contact")}
-                  variant="outline"
                   size="lg"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 shadow-lg relative overflow-hidden group"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/50 relative overflow-hidden group"
                 >
                   <span className="relative z-10">Get In Touch</span>
-                  <div className="absolute inset-0 bg-blue-600 opacity-0 rounded-lg group-hover:opacity-100 transition-opacity duration-200" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 opacity-0 rounded-lg group-hover:opacity-100 transition-opacity duration-200" />
+                </Button>
+              </div>
+              <div
+                className="btn-animate"
+                onMouseEnter={handleButtonHover}
+                onMouseLeave={handleButtonHoverOut}
+                onMouseDown={handleButtonTap}
+              >
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900 shadow-lg relative overflow-hidden group"
+                >
+                  <a
+                    href="/AbdelrhmanSaeid-Frontend.pdf"
+                    download="AbdelrhmanSaeid-Frontend.pdf"
+                    className="flex items-center"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    <span className="relative z-10">Download CV</span>
+                    <div className="absolute inset-0 bg-blue-600 opacity-0 rounded-lg group-hover:opacity-100 transition-opacity duration-200" />
+                  </a>
                 </Button>
               </div>
             </div>

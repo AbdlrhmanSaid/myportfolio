@@ -69,19 +69,21 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-blue-700">
               Abdelrhman Saeid
             </h3>
-            <p className="text-gray-700">
+            <p className="text-gray-700 dark:text-gray-300">
               Front-End Developer passionate about creating beautiful,
               responsive, and user-friendly web experiences.
             </p>
           </motion.div>
 
-          <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-700">Quick Links</h3>
-            <ul className="space-y-2">
+          <motion.div variants={item} className="space-y-4 ">
+            <h3 className="text-lg font-semibold text-blue-700 ">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 ">
               <li>
                 <Link
                   href="#about"
-                  className="text-gray-700 hover:text-white transition-colors"
+                  className="text-gray-700  transition-colors dark:text-gray-300"
                 >
                   About Me
                 </Link>
@@ -89,7 +91,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#projects"
-                  className="text-gray-700 hover:text-white transition-colors"
+                  className="text-gray-700  transition-colors dark:text-gray-300"
                 >
                   Projects
                 </Link>
@@ -97,7 +99,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#contact"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700  transition-colors dark:text-gray-300  transition-colors"
                 >
                   Contact
                 </Link>
@@ -110,11 +112,11 @@ export default function Footer() {
               Contact Info
             </h3>
             <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300  transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>bodesaid3@gmail.com</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300  transition-colors    ">
                 <Phone className="w-4 h-4" />
                 <span>+201206734290</span>
               </li>
@@ -133,7 +135,7 @@ export default function Footer() {
                 <Link
                   href="https://github.com/AbdlrhmanSaid"
                   target="_blank"
-                  className="text-gray-700 hover:text-white"
+                  className="text-gray-700  dark:text-gray-300  transition-colors"
                   aria-label="GitHub Profile"
                 >
                   <Github className="w-5 h-5" />
@@ -149,7 +151,7 @@ export default function Footer() {
                 <Link
                   href="https://www.linkedin.com/in/abdelrhman-saeid-95564a25a/"
                   target="_blank"
-                  className="text-gray-700 hover:text-white"
+                  className="text-gray-700  dark:text-gray-300  transition-colors"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -165,7 +167,7 @@ export default function Footer() {
                 <Link
                   href="https://wa.me/201206734290"
                   target="_blank"
-                  className="text-gray-700 hover:text-white"
+                  className="text-gray-700  dark:text-gray-300  transition-colors"
                   aria-label="WhatsApp Chat"
                 >
                   <MessageCircle className="w-5 h-5" />

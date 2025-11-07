@@ -39,30 +39,174 @@ export default function About() {
   const decorativeRefs = useRef([]);
 
   const skills = [
-    { name: "HTML", icon: SiHtml5, color: "text-orange-600" },
-    { name: "CSS", icon: SiCss3, color: "text-blue-600" },
-    { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-    { name: "TypeScript", icon: SiTypescript, color: "text-blue-700" },
-    { name: "React.js", icon: SiReact, color: "text-cyan-500" },
-    { name: "Next.js", icon: SiNextdotjs, color: "text-black dark:text-white" },
-    { name: "Redux", icon: SiRedux, color: "text-purple-600" },
-    { name: "React Router", icon: SiReactrouter, color: "text-red-600" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-500" },
-    { name: "Shadcn", icon: SiCodepen, color: "text-black dark:text-white" },
-    { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-700" },
-    { name: "Sass", icon: SiSass, color: "text-pink-500" },
-    { name: "EmailJs", icon: SiNodemon, color: "text-green-600" },
-    { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-    { name: "Mongoose", icon: SiMongodb, color: "text-green-500" },
-    { name: "Axios", icon: SiAxios, color: "text-purple-500" },
-    { name: "React Query", icon: SiReactquery, color: "text-red-500" },
-    { name: "Clerk", icon: SiAuth0, color: "text-blue-800" },
-    { name: "Cloudinary", icon: SiCloudinary, color: "text-blue-500" },
-    { name: "Vite", icon: SiVite, color: "text-purple-400" },
-    { name: "Git", icon: SiGit, color: "text-orange-500" },
-    { name: "GitHub", icon: SiGithub, color: "text-black dark:text-white" },
-    { name: "Figma", icon: SiFigma, color: "text-pink-600" },
-    { name: "Adobe XD", icon: SiAdobexd, color: "text-pink-700" },
+    {
+      name: "HTML",
+      icon: SiHtml5,
+      color: "text-orange-600",
+      level: "Expert",
+      years: "4+",
+    },
+    {
+      name: "CSS",
+      icon: SiCss3,
+      color: "text-blue-600",
+      level: "Expert",
+      years: "4+",
+    },
+    {
+      name: "JavaScript",
+      icon: SiJavascript,
+      color: "text-yellow-400",
+      level: "Expert",
+      years: "4+",
+    },
+    {
+      name: "TypeScript",
+      icon: SiTypescript,
+      color: "text-blue-700",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "React.js",
+      icon: SiReact,
+      color: "text-cyan-500",
+      level: "Expert",
+      years: "3+",
+    },
+    {
+      name: "Next.js",
+      icon: SiNextdotjs,
+      color: "text-black dark:text-white",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "Redux",
+      icon: SiRedux,
+      color: "text-purple-600",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "React Router",
+      icon: SiReactrouter,
+      color: "text-red-600",
+      level: "Expert",
+      years: "3+",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: SiTailwindcss,
+      color: "text-teal-500",
+      level: "Expert",
+      years: "3+",
+    },
+    {
+      name: "Shadcn",
+      icon: SiCodepen,
+      color: "text-black dark:text-white",
+      level: "Advanced",
+      years: "1+",
+    },
+    {
+      name: "Bootstrap",
+      icon: SiBootstrap,
+      color: "text-purple-700",
+      level: "Expert",
+      years: "4+",
+    },
+    {
+      name: "Sass",
+      icon: SiSass,
+      color: "text-pink-500",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "EmailJs",
+      icon: SiNodemon,
+      color: "text-green-600",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "MongoDB",
+      icon: SiMongodb,
+      color: "text-green-500",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "Mongoose",
+      icon: SiMongodb,
+      color: "text-green-500",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "Axios",
+      icon: SiAxios,
+      color: "text-purple-500",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "React Query",
+      icon: SiReactquery,
+      color: "text-red-500",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "Clerk",
+      icon: SiAuth0,
+      color: "text-blue-800",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "Cloudinary",
+      icon: SiCloudinary,
+      color: "text-blue-500",
+      level: "Intermediate",
+      years: "1+",
+    },
+    {
+      name: "Vite",
+      icon: SiVite,
+      color: "text-purple-400",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "Git",
+      icon: SiGit,
+      color: "text-orange-500",
+      level: "Advanced",
+      years: "3+",
+    },
+    {
+      name: "GitHub",
+      icon: SiGithub,
+      color: "text-black dark:text-white",
+      level: "Expert",
+      years: "4+",
+    },
+    {
+      name: "Figma",
+      icon: SiFigma,
+      color: "text-pink-600",
+      level: "Advanced",
+      years: "2+",
+    },
+    {
+      name: "Adobe XD",
+      icon: SiAdobexd,
+      color: "text-pink-700",
+      level: "Intermediate",
+      years: "1+",
+    },
   ];
 
   useEffect(() => {
@@ -233,32 +377,49 @@ export default function About() {
             ref={cardRef}
             className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-700"
           >
-            <p
-              ref={textRef}
-              className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8"
-            >
-              Abdelrhman Saeid is a passionate{" "}
-              <span className="text-blue-700 dark:text-blue-300 font-medium">
-                Front-End Developer
-              </span>{" "}
-              with{" "}
-              <span className="text-blue-700 dark:text-blue-300 font-medium">
-                4+ years
-              </span>{" "}
-              of experience specializing in modern web technologies including{" "}
-              <span className="text-blue-700 dark:text-blue-300 font-medium">
-                React.js
-              </span>
-              ,{" "}
-              <span className="text-blue-700 dark:text-blue-300 font-medium">
-                Next.js
-              </span>
-              , and{" "}
-              <span className="text-blue-700 dark:text-blue-300 font-medium">
-                TypeScript
-              </span>
-              .
-            </p>
+            <div ref={textRef} className="space-y-6 mb-8">
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                Abdelrhman Saeid is a passionate{" "}
+                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  Front-End Developer
+                </span>{" "}
+                with{" "}
+                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  4+ years
+                </span>{" "}
+                of experience specializing in modern web technologies including{" "}
+                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  React.js
+                </span>
+                ,{" "}
+                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  Next.js
+                </span>
+                , and{" "}
+                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  TypeScript
+                </span>
+                .
+              </p>
+
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border-l-4 border-blue-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  My Journey
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I started as a self-taught developer, discovering my passion
+                  for front-end development through the beauty of creating
+                  interactive and visually appealing user interfaces. What began
+                  as curiosity about how websites work evolved into a deep
+                  commitment to crafting exceptional web experiences. I
+                  specialize in React and Next.js because I believe in building
+                  scalable, performant applications that not only look great but
+                  also provide seamless user experiences. Every project is an
+                  opportunity to push boundaries, learn new technologies, and
+                  deliver solutions that make a real impact.
+                </p>
+              </div>
+            </div>
 
             <div
               ref={containerRef}
@@ -268,23 +429,31 @@ export default function About() {
                 <div
                   key={skill.name}
                   ref={(el) => (skillsRef.current[index] = el)}
-                  className="text-center"
+                  className="text-center group"
                   onMouseEnter={() => handleSkillHover(index)}
                   onMouseLeave={() => handleSkillHoverOut(index)}
                   onMouseDown={() => handleSkillTap(index)}
                 >
-                  <Badge
-                    variant="secondary"
-                    className="skill-badge mb-2 flex items-center justify-center p-2 text-sm font-medium transition-all duration-300 hover:shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-                  >
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 hover:shadow-lg cursor-pointer h-full flex flex-col items-center justify-center">
                     <div
                       onMouseEnter={handleIconHover}
                       onMouseLeave={handleIconHoverOut}
+                      className="mb-2"
                     >
-                      <skill.icon className={`w-6 h-6 mr-2 ${skill.color}`} />
+                      <skill.icon
+                        className={`w-8 h-8 ${skill.color} mx-auto`}
+                      />
                     </div>
-                    <p className="text-[1rem]">{skill.name}</p>
-                  </Badge>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                      {skill.name}
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                      {skill.level}
+                    </p>
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                      {skill.years} years
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

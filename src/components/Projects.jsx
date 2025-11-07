@@ -6,7 +6,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github, Info, X } from "lucide-react";
 import { projects } from "@/data/projects";
 import { useState, useRef, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
@@ -16,6 +17,7 @@ import { gsap } from "gsap";
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -315,41 +317,76 @@ export default function Projects() {
                     <CardDescription className="text-sm line-clamp-3">
                       {project.description}
                     </CardDescription>
+                    {project.technologies && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {project.technologies.slice(0, 3).map((tech, idx) => (
+                          <Badge
+                            key={idx}
+                            variant="secondary"
+                            className="text-xs"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <Badge variant="secondary" className="text-xs">
+                            +{project.technologies.length - 3}
+                          </Badge>
+                        )}
+                      </div>
+                    )}
                   </CardHeader>
-                  <CardContent className="p-4 mt-auto flex gap-2">
-                    <Button
-                      asChild
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
-                      onMouseEnter={handleButtonHover}
-                      onMouseLeave={handleButtonHoverOut}
-                      onMouseDown={handleButtonTap}
-                    >
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
-                      </a>
-                    </Button>
-                    {project.github && (
+                  <CardContent className="p-4 mt-auto space-y-2">
+                    <div className="flex gap-2">
                       <Button
                         asChild
-                        variant="outline"
-                        className="flex-1"
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
                         onMouseEnter={handleButtonHover}
                         onMouseLeave={handleButtonHoverOut}
                         onMouseDown={handleButtonTap}
                       >
                         <a
-                          href={project.github}
+                          href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Live Demo
                         </a>
+                      </Button>
+                      {project.github && (
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="flex-1"
+                          onMouseEnter={handleButtonHover}
+                          onMouseLeave={handleButtonHoverOut}
+                          onMouseDown={handleButtonTap}
+                        >
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            Code
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                    {(project.challenge ||
+                      project.whatIDid ||
+                      project.result) && (
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => setSelectedProject(project)}
+                        onMouseEnter={handleButtonHover}
+                        onMouseLeave={handleButtonHoverOut}
+                        onMouseDown={handleButtonTap}
+                      >
+                        <Info className="w-4 h-4 mr-2" />
+                        View Details
                       </Button>
                     )}
                   </CardContent>
@@ -372,6 +409,130 @@ export default function Projects() {
             >
               Reset filters
             </Button>
+          </div>
+        )}
+
+        {selectedProject && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm "
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl mt-[50px]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {selectedProject.title}
+                </h3>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setSelectedProject(null)}
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              <div className="p-6 space-y-6">
+                <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                  <Image
+                    src={selectedProject.image || "/placeholder.svg"}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Description
+                  </h4>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {selectedProject.challenge && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      The Challenge
+                    </h4>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {selectedProject.challenge}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.whatIDid && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      What I Did
+                    </h4>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {selectedProject.whatIDid}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.technologies && (
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Technologies Used
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="secondary"
+                          className="text-sm"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedProject.result && (
+                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border-l-4 border-blue-600">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Result
+                    </h4>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      {selectedProject.result}
+                    </p>
+                  </div>
+                )}
+
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    asChild
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
+                  >
+                    <a
+                      href={selectedProject.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Visit Live Demo
+                    </a>
+                  </Button>
+                  {selectedProject.github && (
+                    <Button asChild variant="outline" className="flex-1">
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        View Code
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
