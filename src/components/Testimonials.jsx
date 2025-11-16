@@ -105,21 +105,21 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+      className="py-20 bg-black relative overflow-hidden"
       id="testimonials"
     >
       <div
         ref={(el) => (decorativeRefs.current[0] = el)}
-        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-50"
+        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl opacity-30"
       />
       <div
         ref={(el) => (decorativeRefs.current[1] = el)}
-        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-indigo-100 dark:bg-indigo-900/30 blur-3xl opacity-50"
+        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl opacity-30"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             <TypeAnimation
               sequence={[
                 "Client Testimonials",
@@ -138,7 +138,7 @@ export default function Testimonials() {
             ref={lineRef}
             className="w-20 h-1 bg-blue-600 mx-auto transform origin-left"
           />
-          <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
             Don't just take my word for it. Here's what clients and colleagues
             have to say about working with me.
           </p>
@@ -149,13 +149,13 @@ export default function Testimonials() {
             <Card
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+              className="bg-gray-900 border border-gray-800 hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <Quote className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <Quote className="w-8 h-8 text-blue-400" />
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                <p className="text-gray-300 mb-4 leading-relaxed">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center mb-3">
@@ -167,10 +167,10 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
+                  <h4 className="font-semibold text-white">
                     {testimonial.name}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-400">
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </div>

@@ -37,17 +37,17 @@ export default function Footer() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="text-white py-12 relative overflow-hidden bg-white/80 dark:bg-gray-900/80"
+      className="text-white py-12 relative overflow-hidden bg-black border-t border-gray-800"
     >
       {/* Decorative elements */}
       <motion.div
-        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-blue-900/20 blur-3xl opacity-50"
+        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl opacity-30"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
       />
       <motion.div
-        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-indigo-900/20 blur-3xl opacity-50"
+        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl opacity-30"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{
@@ -66,24 +66,24 @@ export default function Footer() {
           animate="show"
         >
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-700">
+            <h3 className="text-lg font-semibold text-blue-400">
               Abdelrhman Saeid
             </h3>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p className="text-gray-300">
               Front-End Developer passionate about creating beautiful,
               responsive, and user-friendly web experiences.
             </p>
           </motion.div>
 
           <motion.div variants={item} className="space-y-4 ">
-            <h3 className="text-lg font-semibold text-blue-700 ">
+            <h3 className="text-lg font-semibold text-blue-400 ">
               Quick Links
             </h3>
             <ul className="space-y-2 ">
               <li>
                 <Link
                   href="#about"
-                  className="text-gray-700  transition-colors dark:text-gray-300"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                 >
                   About Me
                 </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#projects"
-                  className="text-gray-700  transition-colors dark:text-gray-300"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                 >
                   Projects
                 </Link>
@@ -99,7 +99,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#contact"
-                  className="text-gray-700  transition-colors dark:text-gray-300  transition-colors"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                 >
                   Contact
                 </Link>
@@ -108,15 +108,15 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-700">
+            <h3 className="text-lg font-semibold text-blue-400">
               Contact Info
             </h3>
             <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300  transition-colors">
+              <li className="flex items-center space-x-2 text-gray-300  transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>bodesaid3@gmail.com</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-700 dark:text-gray-300  transition-colors    ">
+              <li className="flex items-center space-x-2 text-gray-300  transition-colors    ">
                 <Phone className="w-4 h-4" />
                 <span>+201206734290</span>
               </li>
@@ -124,7 +124,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={item} className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-700">Follow Me</h3>
+            <h3 className="text-lg font-semibold text-blue-400">Follow Me</h3>
             <div className="flex space-x-4">
               <Button
                 variant="ghost"
@@ -135,7 +135,7 @@ export default function Footer() {
                 <Link
                   href="https://github.com/AbdlrhmanSaid"
                   target="_blank"
-                  className="text-gray-700  dark:text-gray-300  transition-colors"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                   aria-label="GitHub Profile"
                 >
                   <Github className="w-5 h-5" />
@@ -151,7 +151,7 @@ export default function Footer() {
                 <Link
                   href="https://www.linkedin.com/in/abdelrhman-saeid-95564a25a/"
                   target="_blank"
-                  className="text-gray-700  dark:text-gray-300  transition-colors"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -167,7 +167,7 @@ export default function Footer() {
                 <Link
                   href="https://wa.me/201206734290"
                   target="_blank"
-                  className="text-gray-700  dark:text-gray-300  transition-colors"
+                  className="text-gray-300  transition-colors hover:text-blue-400"
                   aria-label="WhatsApp Chat"
                 >
                   <MessageCircle className="w-5 h-5" />
@@ -184,10 +184,10 @@ export default function Footer() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="text-gray-300">
             © {currentYear} Abdelrhman Saeid. All rights reserved.
           </p>
-          <p className="text-gray-800 dark:text-gray-400 text-sm mt-2">
+          <p className="text-gray-400 text-sm mt-2">
             Built with Next.js, Tailwind CSS, and
           </p>
         </motion.div>

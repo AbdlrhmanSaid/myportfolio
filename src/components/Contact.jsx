@@ -95,18 +95,18 @@ export default function Contact() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+      className="py-20 bg-black relative overflow-hidden"
       id="contact"
     >
       {/* Decorative elements */}
       <motion.div
-        className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-50"
+        className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl opacity-30"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
       />
       <motion.div
-        className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-indigo-100 dark:bg-indigo-900/30 blur-3xl opacity-50"
+        className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl opacity-30"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{
@@ -124,7 +124,7 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             <TypeAnimation
               sequence={[
                 "Get In Touch",
@@ -155,24 +155,24 @@ export default function Contact() {
         >
           {/* Contact Information */}
           <motion.div variants={item}>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6">
               Contact Information
             </h3>
             <div className="space-y-6">
               <motion.div
-                className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors border border-gray-800"
                 whileHover={{ x: 5 }}
               >
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Mail className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                <div className="p-3 bg-blue-500/20 rounded-full">
+                  <Mail className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-medium text-gray-300">
                     Email
                   </h4>
                   <a
                     href="mailto:bodesaid3@gmail.com"
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
+                    className="text-gray-200 hover:text-blue-400 transition-colors"
                   >
                     bodesaid3@gmail.com
                   </a>
@@ -180,19 +180,19 @@ export default function Contact() {
               </motion.div>
 
               <motion.div
-                className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors border border-gray-800"
                 whileHover={{ x: 5 }}
               >
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Phone className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                <div className="p-3 bg-blue-500/20 rounded-full">
+                  <Phone className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-medium text-gray-300">
                     Phone
                   </h4>
                   <a
                     href="tel:+201206734290"
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
+                    className="text-gray-200 hover:text-blue-400 transition-colors"
                   >
                     +201206734290
                   </a>
@@ -200,21 +200,21 @@ export default function Contact() {
               </motion.div>
 
               <motion.div
-                className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors border border-gray-800"
                 whileHover={{ x: 5 }}
               >
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <MessageCircle className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                <div className="p-3 bg-blue-500/20 rounded-full">
+                  <MessageCircle className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-medium text-gray-300">
                     WhatsApp
                   </h4>
                   <a
                     href="https://wa.me/201206734290"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
+                    className="text-gray-200 hover:text-blue-400 transition-colors"
                   >
                     Chat on WhatsApp
                   </a>
@@ -222,21 +222,21 @@ export default function Contact() {
               </motion.div>
 
               <motion.div
-                className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors border border-gray-800"
                 whileHover={{ x: 5 }}
               >
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Linkedin className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                <div className="p-3 bg-blue-500/20 rounded-full">
+                  <Linkedin className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-medium text-gray-300">
                     LinkedIn
                   </h4>
                   <a
                     href="https://www.linkedin.com/in/abdelrhman-saeid-95564a25a/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
+                    className="text-gray-200 hover:text-blue-400 transition-colors"
                   >
                     Connect on LinkedIn
                   </a>
@@ -244,21 +244,21 @@ export default function Contact() {
               </motion.div>
 
               <motion.div
-                className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors border border-gray-800"
                 whileHover={{ x: 5 }}
               >
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <Github className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+                <div className="p-3 bg-blue-500/20 rounded-full">
+                  <Github className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-medium text-gray-300">
                     GitHub
                   </h4>
                   <a
                     href="https://github.com/AbdlrhmanSaid"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-800 dark:text-gray-200 hover:text-blue-700 transition-colors"
+                    className="text-gray-200 hover:text-blue-400 transition-colors"
                   >
                     View GitHub Profile
                   </a>
@@ -269,7 +269,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <motion.div variants={item}>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6">
               Send Message
             </h3>
             <motion.form

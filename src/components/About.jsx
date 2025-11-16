@@ -77,7 +77,7 @@ export default function About() {
     {
       name: "Next.js",
       icon: SiNextdotjs,
-      color: "text-black dark:text-white",
+      color: "text-white",
       level: "Advanced",
       years: "2+",
     },
@@ -105,7 +105,7 @@ export default function About() {
     {
       name: "Shadcn",
       icon: SiCodepen,
-      color: "text-black dark:text-white",
+      color: "text-white",
       level: "Advanced",
       years: "1+",
     },
@@ -189,7 +189,7 @@ export default function About() {
     {
       name: "GitHub",
       icon: SiGithub,
-      color: "text-black dark:text-white",
+      color: "text-white",
       level: "Expert",
       years: "4+",
     },
@@ -337,21 +337,21 @@ export default function About() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+      className="py-20 bg-black relative overflow-hidden"
       id="about"
     >
       <div
         ref={(el) => (decorativeRefs.current[0] = el)}
-        className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-50"
+        className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl opacity-30"
       />
       <div
         ref={(el) => (decorativeRefs.current[1] = el)}
-        className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-indigo-100 dark:bg-indigo-900/30 blur-3xl opacity-50"
+        className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl opacity-30"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             <TypeAnimation
               sequence={[
                 "About Me",
@@ -375,38 +375,38 @@ export default function About() {
         <div className="max-w-4xl mx-auto">
           <div
             ref={cardRef}
-            className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-700"
+            className="bg-gray-900 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-800"
           >
             <div ref={textRef} className="space-y-6 mb-8">
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-300 leading-relaxed">
                 Abdelrhman Saeid is a passionate{" "}
-                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                <span className="text-blue-400 font-medium">
                   Front-End Developer
                 </span>{" "}
                 with{" "}
-                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                <span className="text-blue-400 font-medium">
                   4+ years
                 </span>{" "}
                 of experience specializing in modern web technologies including{" "}
-                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                <span className="text-blue-400 font-medium">
                   React.js
                 </span>
                 ,{" "}
-                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                <span className="text-blue-400 font-medium">
                   Next.js
                 </span>
                 , and{" "}
-                <span className="text-blue-700 dark:text-blue-300 font-medium">
+                <span className="text-blue-400 font-medium">
                   TypeScript
                 </span>
                 .
               </p>
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border-l-4 border-blue-600">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              <div className="bg-blue-500/10 rounded-lg p-6 border-l-4 border-blue-500">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   My Journey
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   I started as a self-taught developer, discovering my passion
                   for front-end development through the beauty of creating
                   interactive and visually appealing user interfaces. What began
@@ -434,7 +434,7 @@ export default function About() {
                   onMouseLeave={() => handleSkillHoverOut(index)}
                   onMouseDown={() => handleSkillTap(index)}
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 hover:shadow-lg cursor-pointer h-full flex flex-col items-center justify-center">
+                  <div className="bg-gray-800 rounded-lg p-4 border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer h-full flex flex-col items-center justify-center">
                     <div
                       onMouseEnter={handleIconHover}
                       onMouseLeave={handleIconHoverOut}
@@ -444,13 +444,13 @@ export default function About() {
                         className={`w-8 h-8 ${skill.color} mx-auto`}
                       />
                     </div>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                    <p className="text-sm font-semibold text-white mb-1">
                       {skill.name}
                     </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                    <p className="text-xs text-gray-400 mb-1">
                       {skill.level}
                     </p>
-                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                    <p className="text-xs text-blue-400 font-medium">
                       {skill.years} years
                     </p>
                   </div>

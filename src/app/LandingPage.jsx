@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -11,24 +11,17 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
-
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+    // Force black theme
+    document.documentElement.classList.add("dark");
+    document.documentElement.style.backgroundColor = "#000000";
+    document.body.style.backgroundColor = "#000000";
+  }, []);
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? "dark" : ""
-      }`}
-    >
+    <div className="min-h-screen bg-black transition-colors duration-300">
       <Toaster position="top-center" reverseOrder={true} />
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       <Hero />
       <About />

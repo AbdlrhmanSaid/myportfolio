@@ -210,23 +210,23 @@ export default function Projects() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden"
+      className="py-20 bg-black relative overflow-hidden"
       id="projects"
     >
       {/* Background animation */}
       <div
         ref={(el) => (decorativeRefs.current[0] = el)}
-        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/30 blur-3xl opacity-50"
+        className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl opacity-30"
       />
       <div
         ref={(el) => (decorativeRefs.current[1] = el)}
-        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-indigo-100 dark:bg-indigo-900/30 blur-3xl opacity-50"
+        className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl opacity-30"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section title */}
         <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             <TypeAnimation
               sequence={[
                 "Featured Projects",
@@ -259,8 +259,8 @@ export default function Projects() {
                 onMouseDown={handleButtonTap}
                 className={`filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === category
-                    ? "bg-blue-600 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                    ? "bg-blue-500 text-white shadow-md"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
               >
                 {category}
@@ -272,7 +272,7 @@ export default function Projects() {
             <input
               type="text"
               placeholder="Search projects..."
-              className="w-full px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              className="w-full px-4 py-2 rounded-full border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -396,7 +396,7 @@ export default function Projects() {
           </div>
         ) : (
           <div ref={noProjectsRef} className="text-center py-12">
-            <h3 className="text-xl font-medium text-gray-800 dark:text-gray-200">
+            <h3 className="text-xl font-medium text-gray-300">
               No projects found matching your criteria
             </h3>
             <Button
@@ -414,15 +414,15 @@ export default function Projects() {
 
         {selectedProject && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm "
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm "
             onClick={() => setSelectedProject(null)}
           >
             <div
-              className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl mt-[50px]"
+              className="bg-gray-900 rounded-lg max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl mt-[50px] border border-gray-800"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <div className="sticky top-0 bg-gray-900 border-b border-gray-800 p-4 flex justify-between items-center">
+                <h3 className="text-2xl font-bold text-white">
                   {selectedProject.title}
                 </h3>
                 <Button
@@ -444,39 +444,33 @@ export default function Projects() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  <h4 className="text-lg font-semibold text-white mb-2">
                     Description
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {selectedProject.description}
-                  </p>
+                  <p className="text-gray-300">{selectedProject.description}</p>
                 </div>
 
                 {selectedProject.challenge && (
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       The Challenge
                     </h4>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {selectedProject.challenge}
-                    </p>
+                    <p className="text-gray-300">{selectedProject.challenge}</p>
                   </div>
                 )}
 
                 {selectedProject.whatIDid && (
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       What I Did
                     </h4>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {selectedProject.whatIDid}
-                    </p>
+                    <p className="text-gray-300">{selectedProject.whatIDid}</p>
                   </div>
                 )}
 
                 {selectedProject.technologies && (
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       Technologies Used
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -494,13 +488,11 @@ export default function Projects() {
                 )}
 
                 {selectedProject.result && (
-                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border-l-4 border-blue-600">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  <div className="bg-blue-500/10 rounded-lg p-4 border-l-4 border-blue-500">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       Result
                     </h4>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {selectedProject.result}
-                    </p>
+                    <p className="text-gray-300">{selectedProject.result}</p>
                   </div>
                 )}
 
