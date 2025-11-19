@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { TypeAnimation } from "react-type-animation";
+import TypeAnimation from "@/components/Typewriter";
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { Download, Sparkles } from "lucide-react";
@@ -34,6 +36,9 @@ export default function Hero() {
   const glowRefs = useRef([]);
   const logoRefs = useRef([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafRef = useRef(null);
+  const boundsRef = useRef({ left: 0, top: 0 });
+  const pointerCache = useRef({ clientX: 0, clientY: 0 });
 
   // Technology icons from skills
   const technologies = [
@@ -68,24 +73,43 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const updateBounds = () => {
       if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        setMousePosition({ x, y });
+        boundsRef.current = containerRef.current.getBoundingClientRect();
       }
     };
 
+    const handleMouseMove = (event) => {
+      pointerCache.current = {
+        clientX: event.clientX,
+        clientY: event.clientY,
+      };
+
+      if (rafRef.current) return;
+
+      rafRef.current = requestAnimationFrame(() => {
+        const { clientX, clientY } = pointerCache.current;
+        const { left, top } = boundsRef.current;
+        setMousePosition({ x: clientX - left, y: clientY - top });
+        rafRef.current = null;
+      });
+    };
+
+    updateBounds();
     const container = containerRef.current;
-    if (container) {
-      container.addEventListener("mousemove", handleMouseMove);
-    }
+
+    container?.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", updateBounds);
+    window.addEventListener("scroll", updateBounds, true);
 
     return () => {
-      if (container) {
-        container.removeEventListener("mousemove", handleMouseMove);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
       }
+      container?.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", updateBounds);
+      window.removeEventListener("scroll", updateBounds, true);
     };
   }, []);
 

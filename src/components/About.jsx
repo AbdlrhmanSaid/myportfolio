@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import {
   SiHtml5,
@@ -24,7 +26,7 @@ import {
   SiAuth0,
   SiNodemon,
 } from "react-icons/si";
-import { TypeAnimation } from "react-type-animation";
+import TypeAnimation from "@/components/Typewriter";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 

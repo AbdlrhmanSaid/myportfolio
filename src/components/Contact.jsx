@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Mail, Linkedin, Github, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
+import TypeAnimation from "@/components/Typewriter";
+
+const MotionButton = motion(Button);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,7 +18,14 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const MotionButton = motion(Button);
+  const emailClientRef = useRef(null);
+
+  const loadEmailClient = async () => {
+    if (emailClientRef.current) return emailClientRef.current;
+    const mod = await import("@emailjs/browser");
+    emailClientRef.current = mod.default ?? mod;
+    return emailClientRef.current;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +36,9 @@ export default function Contact() {
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     try {
-      await emailjs.send(
+      const emailClient = await loadEmailClient();
+
+      await emailClient.send(
         serviceId,
         templateId,
         {

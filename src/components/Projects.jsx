@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -9,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Info, X } from "lucide-react";
 import { projects } from "@/data/projects";
-import { useState, useRef, useEffect } from "react";
-import { TypeAnimation } from "react-type-animation";
+import { useState, useRef, useEffect, useMemo } from "react";
+import TypeAnimation from "@/components/Typewriter";
 import Image from "next/image";
 import { gsap } from "gsap";
 
@@ -30,20 +32,24 @@ export default function Projects() {
 
   const categories = ["All", ...Object.keys(projects)];
 
-  const filteredProjects = Object.entries(projects)
-    .filter(
-      ([category]) => activeCategory === "All" || category === activeCategory
-    )
-    .flatMap(([category, categoryProjects]) =>
-      categoryProjects
-        .filter(
-          (project) =>
-            project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            project.description.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        .map((project) => ({ ...project, category }))
-    )
-    .reverse();
+  const filteredProjects = useMemo(() => {
+    const needle = searchTerm.toLowerCase();
+
+    return Object.entries(projects)
+      .filter(
+        ([category]) => activeCategory === "All" || category === activeCategory
+      )
+      .flatMap(([category, categoryProjects]) =>
+        categoryProjects
+          .filter(
+            (project) =>
+              project.title.toLowerCase().includes(needle) ||
+              project.description.toLowerCase().includes(needle)
+          )
+          .map((project) => ({ ...project, category }))
+      )
+      .reverse();
+  }, [activeCategory, searchTerm]);
 
   // تهيئة GSAP animations
   useEffect(() => {

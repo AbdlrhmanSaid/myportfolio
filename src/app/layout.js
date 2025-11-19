@@ -38,8 +38,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://api.emailjs.com" />
+        <link rel="dns-prefetch" href="https://api.emailjs.com" />
+      </head>
+      <body className={`${inter.className} bg-black text-white`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { TypeAnimation } from "react-type-animation";
+import TypeAnimation from "@/components/Typewriter";
 import { Quote, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
