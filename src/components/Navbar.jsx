@@ -20,9 +20,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-white">
-              AS
-            </h1>
+            <h1 className="text-xl font-bold text-white">AS</h1>
           </div>
 
           <div className="hidden md:block">
@@ -49,8 +47,8 @@ export default function Navbar() {
               className="hidden md:flex border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black"
             >
               <a
-                href="/AbdelrhmanSaeid-Frontend.pdf"
-                download="AbdelrhmanSaeid-Frontend.pdf"
+                href="/AbdelrhmanSaeid-Frontend Developer.pdf"
+                download="AbdelrhmanSaeid-Frontend Developer.pdf"
                 className="flex items-center"
               >
                 <Download className="w-4 h-4 mr-2" />
