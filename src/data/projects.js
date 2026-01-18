@@ -10,15 +10,7 @@ export const projects = {
         "Building a full-featured e-commerce platform with secure authentication, payment processing, and inventory management",
       whatIDid:
         "Developed the complete front-end using React.js and Next.js, implemented user authentication with Clerk, integrated payment gateway, created responsive product catalog with search and filter functionality, and built admin dashboard for order management",
-      technologies: [
-        "React.js",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Clerk",
-        "Stripe",
-        "MongoDB",
-      ],
+      technologies: ["React.js", "Next.js", "TypeScript", "Tailwind CSS"],
       result:
         "Successfully launched a production-ready e-commerce platform with 1000+ daily active users and seamless checkout experience",
       github: null,
@@ -56,11 +48,10 @@ export const projects = {
       technologies: [
         "React.js",
         "Next.js",
-        "Node.js",
         "MongoDB",
         "Redux",
-        "Socket.io",
-        "JWT",
+        "clerk",
+        "EmailJs",
       ],
       result:
         "Created a scalable project management solution used by teams of 5-50 members, improving project completion rates by 35%",
@@ -76,7 +67,7 @@ export const projects = {
         "Translating a complex Figma design into a pixel-perfect, responsive website for a security devices company",
       whatIDid:
         "Converted Figma designs to code with 100% accuracy, implemented responsive layouts for all devices, created interactive product showcases, and optimized images for fast loading",
-      technologies: ["React.js", "Next.js", "Tailwind CSS", "Figma"],
+      technologies: ["Html", "Css", "JavaScript", "Figma", "OctoberCMS"],
       result:
         "Delivered a pixel-perfect website that matched the design specifications exactly, resulting in client approval on first review",
       github: null,
@@ -91,7 +82,7 @@ export const projects = {
         "Creating an attractive landing page that showcases premium dates products and drives conversions",
       whatIDid:
         "Developed a beautiful landing page with product galleries, customer testimonials, and contact forms. Implemented smooth animations and optimized for mobile devices",
-      technologies: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion"],
+      technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
       result:
         "Created an engaging landing page that increased product inquiries by 60% and improved brand visibility",
       github: null,
@@ -106,13 +97,7 @@ export const projects = {
         "Building a service request platform landing page that clearly communicates services and encourages user sign-ups",
       whatIDid:
         "Designed and developed a modern landing page with service categories, pricing sections, and easy-to-use contact forms. Implemented form validation and integrated with email service",
-      technologies: [
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "EmailJS",
-        "Formik",
-      ],
+      technologies: ["React.js", "Tailwind CSS"],
       result:
         "Launched a professional service platform that streamlined customer requests and improved service booking by 50%",
       github: null,
