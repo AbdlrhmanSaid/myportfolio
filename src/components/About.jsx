@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import {
   SiHtml5,
   SiCss3,
@@ -26,188 +25,108 @@ import {
   SiAuth0,
   SiNodemon,
 } from "react-icons/si";
+import {
+  Code2,
+  Layers,
+  Palette,
+  Database,
+  Wrench,
+  Sparkles,
+} from "lucide-react";
 import TypeAnimation from "@/components/Typewriter";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function About() {
   const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const skillsRef = useRef([]);
   const titleRef = useRef(null);
   const lineRef = useRef(null);
   const cardRef = useRef(null);
   const textRef = useRef(null);
   const decorativeRefs = useRef([]);
+  const skillCategoriesRef = useRef([]);
 
-  const skills = [
+  const skillCategories = [
     {
-      name: "HTML",
-      icon: SiHtml5,
-      color: "text-orange-600",
-      level: "Expert",
-      years: "4+",
+      title: "Core Technologies",
+      icon: Code2,
+      iconColor: "text-blue-400",
+      skills: [
+        { name: "HTML5", icon: SiHtml5, color: "#E34F26", level: 95 },
+        { name: "CSS3", icon: SiCss3, color: "#1572B6", level: 95 },
+        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", level: 90 },
+        { name: "TypeScript", icon: SiTypescript, color: "#3178C6", level: 80 },
+      ],
     },
     {
-      name: "CSS",
-      icon: SiCss3,
-      color: "text-blue-600",
-      level: "Expert",
-      years: "4+",
+      title: "Frameworks & Libraries",
+      icon: Layers,
+      iconColor: "text-purple-400",
+      skills: [
+        { name: "React.js", icon: SiReact, color: "#61DAFB", level: 92 },
+        { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", level: 85 },
+        { name: "Redux", icon: SiRedux, color: "#764ABC", level: 80 },
+        {
+          name: "React Router",
+          icon: SiReactrouter,
+          color: "#CA4245",
+          level: 90,
+        },
+      ],
     },
     {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "text-yellow-400",
-      level: "Expert",
-      years: "4+",
+      title: "Styling & UI",
+      icon: Palette,
+      iconColor: "text-pink-400",
+      skills: [
+        {
+          name: "Tailwind CSS",
+          icon: SiTailwindcss,
+          color: "#06B6D4",
+          level: 93,
+        },
+        { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3", level: 88 },
+        { name: "Sass/SCSS", icon: SiSass, color: "#CC6699", level: 82 },
+        { name: "Shadcn UI", icon: SiCodepen, color: "#FFFFFF", level: 75 },
+      ],
     },
     {
-      name: "TypeScript",
-      icon: SiTypescript,
-      color: "text-blue-700",
-      level: "Advanced",
-      years: "2+",
+      title: "Backend & Database",
+      icon: Database,
+      iconColor: "text-green-400",
+      skills: [
+        { name: "MongoDB", icon: SiMongodb, color: "#47A248", level: 72 },
+        { name: "Mongoose", icon: SiMongodb, color: "#47A248", level: 72 },
+        { name: "Axios", icon: SiAxios, color: "#5A29E4", level: 85 },
+        {
+          name: "React Query",
+          icon: SiReactquery,
+          color: "#FF4154",
+          level: 70,
+        },
+      ],
     },
     {
-      name: "React.js",
-      icon: SiReact,
-      color: "text-cyan-500",
-      level: "Expert",
-      years: "3+",
+      title: "Tools & Services",
+      icon: Wrench,
+      iconColor: "text-orange-400",
+      skills: [
+        { name: "Git", icon: SiGit, color: "#F05032", level: 85 },
+        { name: "GitHub", icon: SiGithub, color: "#FFFFFF", level: 90 },
+        { name: "Vite", icon: SiVite, color: "#646CFF", level: 80 },
+        { name: "Clerk Auth", icon: SiAuth0, color: "#6C47FF", level: 68 },
+      ],
     },
     {
-      name: "Next.js",
-      icon: SiNextdotjs,
-      color: "text-white",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "Redux",
-      icon: SiRedux,
-      color: "text-purple-600",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "React Router",
-      icon: SiReactrouter,
-      color: "text-red-600",
-      level: "Expert",
-      years: "3+",
-    },
-    {
-      name: "Tailwind CSS",
-      icon: SiTailwindcss,
-      color: "text-teal-500",
-      level: "Expert",
-      years: "3+",
-    },
-    {
-      name: "Shadcn",
-      icon: SiCodepen,
-      color: "text-white",
-      level: "Advanced",
-      years: "1+",
-    },
-    {
-      name: "Bootstrap",
-      icon: SiBootstrap,
-      color: "text-purple-700",
-      level: "Expert",
-      years: "4+",
-    },
-    {
-      name: "Sass",
-      icon: SiSass,
-      color: "text-pink-500",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "EmailJs",
-      icon: SiNodemon,
-      color: "text-green-600",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "MongoDB",
-      icon: SiMongodb,
-      color: "text-green-500",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "Mongoose",
-      icon: SiMongodb,
-      color: "text-green-500",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "Axios",
-      icon: SiAxios,
-      color: "text-purple-500",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "React Query",
-      icon: SiReactquery,
-      color: "text-red-500",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "Clerk",
-      icon: SiAuth0,
-      color: "text-blue-800",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "Cloudinary",
-      icon: SiCloudinary,
-      color: "text-blue-500",
-      level: "Intermediate",
-      years: "1+",
-    },
-    {
-      name: "Vite",
-      icon: SiVite,
-      color: "text-purple-400",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "Git",
-      icon: SiGit,
-      color: "text-orange-500",
-      level: "Advanced",
-      years: "3+",
-    },
-    {
-      name: "GitHub",
-      icon: SiGithub,
-      color: "text-white",
-      level: "Expert",
-      years: "4+",
-    },
-    {
-      name: "Figma",
-      icon: SiFigma,
-      color: "text-pink-600",
-      level: "Advanced",
-      years: "2+",
-    },
-    {
-      name: "Adobe XD",
-      icon: SiAdobexd,
-      color: "text-pink-700",
-      level: "Intermediate",
-      years: "1+",
+      title: "Design & Others",
+      icon: Sparkles,
+      iconColor: "text-yellow-400",
+      skills: [
+        { name: "Figma", icon: SiFigma, color: "#F24E1E", level: 78 },
+        { name: "Adobe XD", icon: SiAdobexd, color: "#FF61F6", level: 65 },
+        { name: "Cloudinary", icon: SiCloudinary, color: "#3448C5", level: 70 },
+        { name: "EmailJS", icon: SiNodemon, color: "#47A248", level: 70 },
+      ],
     },
   ];
 
@@ -216,7 +135,7 @@ export default function About() {
       gsap.fromTo(
         sectionRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.5 }
+        { opacity: 1, duration: 0.5 },
       );
 
       decorativeRefs.current.forEach((ref, index) => {
@@ -230,7 +149,7 @@ export default function About() {
               repeat: -1,
               yoyo: true,
               ease: "power1.inOut",
-            }
+            },
           );
         }
       });
@@ -238,7 +157,7 @@ export default function About() {
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.5 }
+        { opacity: 1, y: 0, duration: 0.5 },
       );
 
       gsap.fromTo(
@@ -248,7 +167,7 @@ export default function About() {
           scaleX: 1,
           duration: 0.8,
           ease: "back.out(1.7)",
-        }
+        },
       );
 
       gsap.fromTo(
@@ -260,7 +179,7 @@ export default function About() {
           duration: 0.5,
           delay: 0.2,
           ease: "back.out(1.7)",
-        }
+        },
       );
 
       gsap.fromTo(
@@ -270,71 +189,26 @@ export default function About() {
           opacity: 1,
           duration: 0.5,
           delay: 0.4,
-        }
+        },
       );
 
-      if (containerRef.current) {
-        gsap.fromTo(
-          skillsRef.current,
-          {
-            opacity: 0,
-            y: 20,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.05,
-            delay: 0.2,
-            ease: "back.out(1.7)",
-          }
-        );
-      }
+      // Simple fade in for skill categories
+      gsap.fromTo(
+        skillCategoriesRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.6,
+          ease: "power2.out",
+        },
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
-  const handleSkillHover = (index) => {
-    gsap.to(skillsRef.current[index], {
-      scale: 1.05,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleSkillHoverOut = (index) => {
-    gsap.to(skillsRef.current[index], {
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleSkillTap = (index) => {
-    gsap.to(skillsRef.current[index], {
-      scale: 0.95,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1,
-    });
-  };
-
-  const handleIconHover = (e) => {
-    gsap.to(e.currentTarget, {
-      rotate: 10,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleIconHoverOut = (e) => {
-    gsap.to(e.currentTarget, {
-      rotate: 0,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
 
   return (
     <section
@@ -374,34 +248,23 @@ export default function About() {
           />
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div
             ref={cardRef}
             className="bg-gray-900 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-800"
           >
-            <div ref={textRef} className="space-y-6 mb-8">
+            {/* About Text */}
+            <div ref={textRef} className="space-y-6 mb-12">
               <p className="text-lg text-gray-300 leading-relaxed">
                 Abdelrhman Saeid is a passionate{" "}
                 <span className="text-blue-400 font-medium">
                   Front-End Developer
                 </span>{" "}
-                with{" "}
-                <span className="text-blue-400 font-medium">
-                  4+ years
-                </span>{" "}
+                with <span className="text-blue-400 font-medium">4+ years</span>{" "}
                 of experience specializing in modern web technologies including{" "}
-                <span className="text-blue-400 font-medium">
-                  React.js
-                </span>
-                ,{" "}
-                <span className="text-blue-400 font-medium">
-                  Next.js
-                </span>
-                , and{" "}
-                <span className="text-blue-400 font-medium">
-                  TypeScript
-                </span>
-                .
+                <span className="text-blue-400 font-medium">React.js</span>,{" "}
+                <span className="text-blue-400 font-medium">Next.js</span>, and{" "}
+                <span className="text-blue-400 font-medium">TypeScript</span>.
               </p>
 
               <div className="bg-blue-500/10 rounded-lg p-6 border-l-4 border-blue-500">
@@ -423,41 +286,91 @@ export default function About() {
               </div>
             </div>
 
-            <div
-              ref={containerRef}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-            >
-              {skills.map((skill, index) => (
-                <div
-                  key={skill.name}
-                  ref={(el) => (skillsRef.current[index] = el)}
-                  className="text-center group"
-                  onMouseEnter={() => handleSkillHover(index)}
-                  onMouseLeave={() => handleSkillHoverOut(index)}
-                  onMouseDown={() => handleSkillTap(index)}
-                >
-                  <div className="bg-gray-800 rounded-lg p-4 border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer h-full flex flex-col items-center justify-center">
+            {/* Skills Section */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-white text-center mb-8">
+                Technical Skills
+              </h3>
+
+              {/* Skills Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {skillCategories.map((category, categoryIndex) => {
+                  const CategoryIcon = category.icon;
+                  return (
                     <div
-                      onMouseEnter={handleIconHover}
-                      onMouseLeave={handleIconHoverOut}
-                      className="mb-2"
+                      key={categoryIndex}
+                      ref={(el) =>
+                        (skillCategoriesRef.current[categoryIndex] = el)
+                      }
+                      className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all duration-300"
                     >
-                      <skill.icon
-                        className={`w-8 h-8 ${skill.color} mx-auto`}
-                      />
+                      {/* Category Header */}
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className={`${category.iconColor}`}>
+                          <CategoryIcon className="w-7 h-7" />
+                        </div>
+                        <h4 className="text-lg font-semibold text-white">
+                          {category.title}
+                        </h4>
+                      </div>
+
+                      {/* Skills List */}
+                      <div className="space-y-4">
+                        {category.skills.map((skill, skillIndex) => {
+                          const SkillIcon = skill.icon;
+                          return (
+                            <div key={skillIndex} className="group">
+                              {/* Skill Name and Icon */}
+                              <div className="flex items-center justify-between mb-2">
+                                <div className="flex items-center gap-2">
+                                  <SkillIcon
+                                    className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                                    style={{ color: skill.color }}
+                                  />
+                                  <span className="text-sm font-medium text-gray-300">
+                                    {skill.name}
+                                  </span>
+                                </div>
+                                <span className="text-sm font-semibold text-blue-400">
+                                  {skill.level}%
+                                </span>
+                              </div>
+
+                              {/* Progress Bar */}
+                              <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                                <div
+                                  className="h-full rounded-full transition-all duration-1000 ease-out"
+                                  style={{
+                                    width: `${skill.level}%`,
+                                    background: `linear-gradient(90deg, ${skill.color}dd, ${skill.color})`,
+                                    boxShadow: `0 0 10px ${skill.color}40`,
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <p className="text-sm font-semibold text-white mb-1">
-                      {skill.name}
-                    </p>
-                    <p className="text-xs text-gray-400 mb-1">
-                      {skill.level}
-                    </p>
-                    <p className="text-xs text-blue-400 font-medium">
-                      {skill.years} years
-                    </p>
-                  </div>
+                  );
+                })}
+              </div>
+
+              {/* Legend */}
+              <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <span className="text-gray-400">Expert (90-100%)</span>
                 </div>
-              ))}
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-blue-500" />
+                  <span className="text-gray-400">Advanced (75-89%)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <span className="text-gray-400">Intermediate (65-74%)</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

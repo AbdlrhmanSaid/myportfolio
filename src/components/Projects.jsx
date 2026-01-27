@@ -9,7 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Info, X } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Info,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { projects } from "@/data/projects";
 import { useState, useRef, useEffect, useMemo } from "react";
 import TypeAnimation from "@/components/Typewriter";
@@ -20,33 +27,34 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const lineRef = useRef(null);
   const filtersRef = useRef(null);
-  const projectsGridRef = useRef(null);
+  const carouselRef = useRef(null);
   const projectCardsRef = useRef([]);
   const decorativeRefs = useRef([]);
   const noProjectsRef = useRef(null);
 
-  const categories = ["All", ...Object.keys(projects)];
+  const categories = [...Object.keys(projects)];
 
   const filteredProjects = useMemo(() => {
     const needle = searchTerm.toLowerCase();
 
     return Object.entries(projects)
       .filter(
-        ([category]) => activeCategory === "All" || category === activeCategory
+        ([category]) => activeCategory === "All" || category === activeCategory,
       )
       .flatMap(([category, categoryProjects]) =>
         categoryProjects
           .filter(
             (project) =>
               project.title.toLowerCase().includes(needle) ||
-              project.description.toLowerCase().includes(needle)
+              project.description.toLowerCase().includes(needle),
           )
-          .map((project) => ({ ...project, category }))
+          .map((project) => ({ ...project, category })),
       )
       .reverse();
   }, [activeCategory, searchTerm]);
@@ -58,7 +66,7 @@ export default function Projects() {
       gsap.fromTo(
         sectionRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.4 }
+        { opacity: 1, duration: 0.4 },
       );
 
       // animation للعناصر الزخرفية
@@ -73,7 +81,7 @@ export default function Projects() {
               repeat: -1,
               yoyo: true,
               ease: "power1.inOut",
-            }
+            },
           );
         }
       });
@@ -82,7 +90,7 @@ export default function Projects() {
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.4 }
+        { opacity: 1, y: 0, duration: 0.4 },
       );
 
       // animation للخط تحت العنوان
@@ -93,7 +101,7 @@ export default function Projects() {
           scaleX: 1,
           duration: 0.6,
           ease: "back.out(1.7)",
-        }
+        },
       );
 
       // animation للفلاتر
@@ -104,38 +112,103 @@ export default function Projects() {
           opacity: 1,
           duration: 0.4,
           delay: 0.2,
-        }
+        },
       );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  // animation للمشاريع عند تغيير الفلتر
+  // Carousel Animation
   useEffect(() => {
-    if (filteredProjects.length > 0) {
-      // إخفاء جميع البطاقات أولاً
-      gsap.set(projectCardsRef.current, { opacity: 0, y: 20 });
+    if (filteredProjects.length > 0 && carouselRef.current) {
+      const cards = carouselRef.current.children;
+      const totalCards = cards.length;
 
-      // إظهار البطاقات مع stagger animation
-      gsap.to(projectCardsRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.7)",
-        delay: 0.1,
+      // Reset all cards
+      gsap.set(cards, {
+        opacity: 0,
+        scale: 0.8,
+        x: 0,
+        rotationY: 0,
+        zIndex: 0,
       });
-    } else if (noProjectsRef.current) {
-      gsap.fromTo(
-        noProjectsRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5 }
-      );
-    }
-  }, [filteredProjects]);
 
-  // دالة لتحريك الأزرار عند hover
+      // Animate cards based on position
+      Array.from(cards).forEach((card, index) => {
+        const position = index - currentIndex;
+        const absPosition = Math.abs(position);
+
+        if (absPosition === 0) {
+          // Center card
+          gsap.to(card, {
+            opacity: 1,
+            scale: 1,
+            x: 0,
+            rotationY: 0,
+            zIndex: 10,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        } else if (absPosition === 1) {
+          // Adjacent cards
+          gsap.to(card, {
+            opacity: 0.6,
+            scale: 0.85,
+            x: position > 0 ? "60%" : "-60%",
+            rotationY: position > 0 ? -25 : 25,
+            zIndex: 5,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        } else if (absPosition === 2) {
+          // Far cards
+          gsap.to(card, {
+            opacity: 0.3,
+            scale: 0.7,
+            x: position > 0 ? "120%" : "-120%",
+            rotationY: position > 0 ? -45 : 45,
+            zIndex: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        } else {
+          // Hidden cards
+          gsap.to(card, {
+            opacity: 0,
+            scale: 0.6,
+            x: position > 0 ? "180%" : "-180%",
+            rotationY: position > 0 ? -60 : 60,
+            zIndex: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        }
+      });
+    }
+  }, [currentIndex, filteredProjects]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev < filteredProjects.length - 1 ? prev + 1 : 0,
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev > 0 ? prev - 1 : filteredProjects.length - 1,
+    );
+  };
+
+  // Auto-play carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [filteredProjects.length]);
+
   const handleButtonHover = (e) => {
     gsap.to(e.currentTarget, {
       scale: 1.05,
@@ -159,58 +232,6 @@ export default function Projects() {
       yoyo: true,
       repeat: 1,
     });
-  };
-
-  // دالة لتحريك البطاقات عند hover
-  const handleCardHover = (index) => {
-    gsap.to(projectCardsRef.current[index], {
-      y: -5,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleCardHoverOut = (index) => {
-    gsap.to(projectCardsRef.current[index], {
-      y: 0,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  // دالة لتغيير الفئة مع animation
-  const handleCategoryChange = (category) => {
-    // animation للخروج
-    if (filteredProjects.length > 0) {
-      gsap.to(projectCardsRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.3,
-        stagger: 0.05,
-        onComplete: () => {
-          setActiveCategory(category);
-        },
-      });
-    } else {
-      setActiveCategory(category);
-    }
-  };
-
-  // دالة لإعادة التعيين مع animation
-  const handleResetFilters = () => {
-    if (noProjectsRef.current) {
-      gsap.to(noProjectsRef.current, {
-        opacity: 0,
-        duration: 0.3,
-        onComplete: () => {
-          setActiveCategory("All");
-          setSearchTerm("");
-        },
-      });
-    } else {
-      setActiveCategory("All");
-      setSearchTerm("");
-    }
   };
 
   return (
@@ -255,25 +276,6 @@ export default function Projects() {
 
         {/* Filter controls */}
         <div ref={filtersRef} className="mb-12">
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleCategoryChange(category)}
-                onMouseEnter={handleButtonHover}
-                onMouseLeave={handleButtonHoverOut}
-                onMouseDown={handleButtonTap}
-                className={`filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === category
-                    ? "bg-blue-500 text-white shadow-md"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
           <div className="max-w-md mx-auto">
             <input
               type="text"
@@ -285,120 +287,168 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Projects grid */}
+        {/* 3D Carousel */}
         {filteredProjects.length > 0 ? (
-          <div
-            ref={projectsGridRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filteredProjects.map((project, index) => (
-              <div
-                key={index}
-                ref={(el) => (projectCardsRef.current[index] = el)}
-                className="project-card"
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHoverOut(index)}
-              >
-                <Card className="group h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-video overflow-hidden relative">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      priority={
-                        project.category === activeCategory &&
-                        activeCategory !== "All"
-                      }
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <span className="text-white text-sm font-medium bg-black/50 px-2 py-1 rounded">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                  <CardHeader className="p-4">
-                    <CardTitle className="text-lg">{project.title}</CardTitle>
-                    <CardDescription className="text-sm line-clamp-3">
-                      {project.description}
-                    </CardDescription>
-                    {project.technologies && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {project.technologies.slice(0, 3).map((tech, idx) => (
-                          <Badge
-                            key={idx}
-                            variant="secondary"
-                            className="text-xs"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <Badge variant="secondary" className="text-xs">
-                            +{project.technologies.length - 3}
-                          </Badge>
-                        )}
+          <div className="relative">
+            {/* Carousel Container */}
+            <div
+              ref={carouselRef}
+              className="relative h-[600px] flex items-center justify-center"
+              style={{ perspective: "2000px" }}
+            >
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={index}
+                  ref={(el) => (projectCardsRef.current[index] = el)}
+                  className="absolute w-full max-w-md"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <Card className="group h-full flex flex-col overflow-hidden shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 bg-gray-900 border-gray-800">
+                    <div className="aspect-video overflow-hidden relative">
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={index === currentIndex}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span className="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">
+                          {project.category}
+                        </span>
                       </div>
-                    )}
-                  </CardHeader>
-                  <CardContent className="p-4 mt-auto space-y-2">
-                    <div className="flex gap-2">
-                      <Button
-                        asChild
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
-                        onMouseEnter={handleButtonHover}
-                        onMouseLeave={handleButtonHoverOut}
-                        onMouseDown={handleButtonTap}
-                      >
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
-                      {project.github && (
+                    </div>
+                    <CardHeader className="p-6">
+                      <CardTitle className="text-xl text-white">
+                        {project.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm line-clamp-3 text-gray-400">
+                        {project.description}
+                      </CardDescription>
+                      {project.technologies && (
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          {project.technologies.slice(0, 3).map((tech, idx) => (
+                            <Badge
+                              key={idx}
+                              variant="secondary"
+                              className="text-xs bg-blue-500/10 text-blue-400 border-blue-500/30"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.technologies.length > 3 && (
+                            <Badge
+                              variant="secondary"
+                              className="text-xs bg-blue-500/10 text-blue-400 border-blue-500/30"
+                            >
+                              +{project.technologies.length - 3}
+                            </Badge>
+                          )}
+                        </div>
+                      )}
+                    </CardHeader>
+                    <CardContent className="p-6 pt-0 mt-auto space-y-3">
+                      <div className="flex gap-2">
                         <Button
                           asChild
-                          variant="outline"
-                          className="flex-1"
+                          className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
                           onMouseEnter={handleButtonHover}
                           onMouseLeave={handleButtonHoverOut}
                           onMouseDown={handleButtonTap}
                         >
                           <a
-                            href={project.github}
+                            href={project.url}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <Github className="w-4 h-4 mr-2" />
-                            Code
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Live Demo
                           </a>
                         </Button>
+                        {project.github && (
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="flex-1 border-gray-700 hover:bg-gray-800"
+                            onMouseEnter={handleButtonHover}
+                            onMouseLeave={handleButtonHoverOut}
+                            onMouseDown={handleButtonTap}
+                          >
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Github className="w-4 h-4 mr-2" />
+                              Code
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                      {(project.challenge ||
+                        project.whatIDid ||
+                        project.result) && (
+                        <Button
+                          variant="outline"
+                          className="w-full border-gray-700 hover:bg-gray-800"
+                          onClick={() => setSelectedProject(project)}
+                          onMouseEnter={handleButtonHover}
+                          onMouseLeave={handleButtonHoverOut}
+                          onMouseDown={handleButtonTap}
+                        >
+                          <Info className="w-4 h-4 mr-2" />
+                          View Details
+                        </Button>
                       )}
-                    </div>
-                    {(project.challenge ||
-                      project.whatIDid ||
-                      project.result) && (
-                      <Button
-                        variant="outline"
-                        className="w-full"
-                        onClick={() => setSelectedProject(project)}
-                        onMouseEnter={handleButtonHover}
-                        onMouseLeave={handleButtonHoverOut}
-                        onMouseDown={handleButtonTap}
-                      >
-                        <Info className="w-4 h-4 mr-2" />
-                        View Details
-                      </Button>
-                    )}
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <Button
+                onClick={handlePrev}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0"
+                onMouseEnter={handleButtonHover}
+                onMouseLeave={handleButtonHoverOut}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Button>
+
+              {/* Indicators */}
+              <div className="flex gap-2">
+                {filteredProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-blue-600 w-8"
+                        : "bg-gray-600 hover:bg-gray-500"
+                    }`}
+                  />
+                ))}
               </div>
-            ))}
+
+              <Button
+                onClick={handleNext}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0"
+                onMouseEnter={handleButtonHover}
+                onMouseLeave={handleButtonHoverOut}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Button>
+            </div>
+
+            {/* Project Counter */}
+            <div className="text-center mt-6">
+              <p className="text-gray-400 text-sm">
+                Project {currentIndex + 1} of {filteredProjects.length}
+              </p>
+            </div>
           </div>
         ) : (
           <div ref={noProjectsRef} className="text-center py-12">
@@ -408,7 +458,10 @@ export default function Projects() {
             <Button
               variant="ghost"
               className="mt-4"
-              onClick={handleResetFilters}
+              onClick={() => {
+                setActiveCategory("All");
+                setSearchTerm("");
+              }}
               onMouseEnter={handleButtonHover}
               onMouseLeave={handleButtonHoverOut}
               onMouseDown={handleButtonTap}
@@ -484,7 +537,7 @@ export default function Projects() {
                         <Badge
                           key={idx}
                           variant="secondary"
-                          className="text-sm"
+                          className="text-sm bg-blue-500/10 text-blue-400 border-blue-500/30"
                         >
                           {tech}
                         </Badge>

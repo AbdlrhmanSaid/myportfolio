@@ -34,7 +34,7 @@ export default function Navbar() {
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
                   </button>
-                )
+                ),
               )}
             </div>
           </div>
@@ -44,11 +44,11 @@ export default function Navbar() {
               asChild
               variant="outline"
               size="sm"
-              className="hidden md:flex border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black"
+              className="hidden md:flex border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-blue-100"
             >
               <a
-                href="/AbdelrhmanSaeid-Frontend Developer.pdf"
-                download="AbdelrhmanSaeid-Frontend Developer.pdf"
+                href="/Abdelrhman Saeid Frontend Developer.pdf"
+                download="Abdelrhman Saeid Frontend Developer.pdf"
                 className="flex items-center"
               >
                 <Download className="w-4 h-4 mr-2" />
@@ -87,7 +87,7 @@ export default function Navbar() {
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </button>
-              )
+              ),
             )}
             <a
               href="/AbdelrhmanSaeid-Frontend.pdf"

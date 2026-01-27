@@ -139,14 +139,14 @@ export default function Hero() {
       gsap.fromTo(
         heroRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.8 }
+        { opacity: 1, duration: 0.8 },
       );
 
       // Glows
       gsap.fromTo(
         ".glow-static",
         { opacity: 0 },
-        { opacity: 0.2, duration: 2, delay: 0.5, stagger: 0.3 }
+        { opacity: 0.2, duration: 2, delay: 0.5, stagger: 0.3 },
       );
 
       // === أنيميشن كلاسيكي - حركة دائرية سلسة ===
@@ -223,7 +223,7 @@ export default function Hero() {
             stagger: 0.15,
             delay: 0.4,
             ease: "power3.out",
-          }
+          },
         );
       }
 
@@ -237,7 +237,7 @@ export default function Hero() {
           duration: 1,
           delay: 0.8,
           ease: "elastic.out(1.2, 0.5)",
-        }
+        },
       );
       gsap.fromTo(
         ".hero-buttons .btn-animate",
@@ -250,7 +250,7 @@ export default function Hero() {
           stagger: 0.15,
           delay: 1.2,
           ease: "back.out(1.7)",
-        }
+        },
       );
       gsap.fromTo(
         ".sparkle-icon",
@@ -261,7 +261,7 @@ export default function Hero() {
           duration: 1,
           delay: 1.5,
           ease: "back.out(1.7)",
-        }
+        },
       );
     }, containerRef);
 
@@ -444,15 +444,10 @@ export default function Hero() {
                 onMouseLeave={handleButtonHoverOut}
                 onMouseDown={handleButtonTap}
               >
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black shadow-lg shadow-blue-400/20 hover:shadow-blue-400/40 relative overflow-hidden group transition-all duration-300 px-8 py-3 text-lg font-medium"
-                >
+                <Button asChild variant="outline" size="lg">
                   <a
-                    href="/AbdelrhmanSaeid-Frontend Developer.pdf"
-                    download="AbdelrhmanSaeid-Frontend Developer.pdf"
+                    href="/Abdelrhman Saeid Frontend Developer.pdf"
+                    download="Abdelrhman Saeid Frontend Developer.pdf"
                     className="flex items-center"
                   >
                     <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
