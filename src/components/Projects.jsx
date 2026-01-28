@@ -59,17 +59,18 @@ export default function Projects() {
       .reverse();
   }, [activeCategory, searchTerm]);
 
-  // تهيئة GSAP animations
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [activeCategory, searchTerm]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // animation للقسم الرئيسي
       gsap.fromTo(
         sectionRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.4 },
       );
 
-      // animation للعناصر الزخرفية
       decorativeRefs.current.forEach((ref, index) => {
         if (ref) {
           gsap.fromTo(
@@ -86,14 +87,12 @@ export default function Projects() {
         }
       });
 
-      // animation للعنوان
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: -20 },
         { opacity: 1, y: 0, duration: 0.4 },
       );
 
-      // animation للخط تحت العنوان
       gsap.fromTo(
         lineRef.current,
         { scaleX: 0 },
@@ -104,7 +103,6 @@ export default function Projects() {
         },
       );
 
-      // animation للفلاتر
       gsap.fromTo(
         filtersRef.current,
         { opacity: 0 },
@@ -119,7 +117,6 @@ export default function Projects() {
     return () => ctx.revert();
   }, []);
 
-  // Carousel Animation
   useEffect(() => {
     if (filteredProjects.length > 0 && carouselRef.current) {
       const cards = carouselRef.current.children;
@@ -202,8 +199,12 @@ export default function Projects() {
 
   // Auto-play carousel
   useEffect(() => {
+    if (filteredProjects.length === 0) return;
+
     const interval = setInterval(() => {
-      handleNext();
+      setCurrentIndex((prev) =>
+        prev < filteredProjects.length - 1 ? prev + 1 : 0,
+      );
     }, 5000);
 
     return () => clearInterval(interval);
@@ -275,7 +276,39 @@ export default function Projects() {
         </div>
 
         {/* Filter controls */}
-        <div ref={filtersRef} className="mb-12">
+        <div ref={filtersRef} className="mb-12 space-y-6">
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              onClick={() => setActiveCategory("All")}
+              className={`rounded-full px-6 py-2 transition-all duration-300 ${
+                activeCategory === "All"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/50"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700"
+              }`}
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHoverOut}
+            >
+              All Projects
+            </Button>
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`rounded-full px-6 py-2 transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/50"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700"
+                }`}
+                onMouseEnter={handleButtonHover}
+                onMouseLeave={handleButtonHoverOut}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+
+          {/* Search Box */}
           <div className="max-w-md mx-auto">
             <input
               type="text"
