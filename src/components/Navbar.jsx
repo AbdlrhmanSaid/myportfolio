@@ -25,7 +25,7 @@ export default function Navbar() {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {["home", "about", "projects", "testimonials", "contact"].map(
+              {["home", "about", "projects", "skills", "contact"].map(
                 (section) => (
                   <button
                     key={section}
@@ -78,7 +78,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black border-t border-gray-800">
-            {["home", "about", "projects", "testimonials", "contact"].map(
+            {["home", "about", "projects", "skills", "contact"].map(
               (section) => (
                 <button
                   key={section}

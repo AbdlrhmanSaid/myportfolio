@@ -19,12 +19,9 @@ const ProjectsSection = dynamic(() => import("@/components/Projects"), {
   loading: () => <SectionSkeleton title="Projects" />,
 });
 
-const TestimonialsSection = dynamic(
-  () => import("@/components/Testimonials"),
-  {
-    loading: () => <SectionSkeleton title="Testimonials" />,
-  }
-);
+const TestimonialsSection = dynamic(() => import("@/components/Testimonials"), {
+  loading: () => <SectionSkeleton title="Skills & Stack" />,
+});
 
 const ContactSection = dynamic(() => import("@/components/Contact"), {
   loading: () => <SectionSkeleton title="Contact" />,
