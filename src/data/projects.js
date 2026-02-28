@@ -344,7 +344,7 @@ export const projects = {
       description:
         "Full-stack project management system with role-based access and team collaboration",
       url: "https://final-step.vercel.app/",
-      image: "/finalstep.png",
+      image: "/finalstep.jpg",
       challenge:
         "Designing a role-based collaboration platform with real-world project workflows",
       whatIDid:
